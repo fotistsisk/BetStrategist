@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec43c93e-c823-4c24-b43c-32051a9bc91b" name="Changes" comment="Fixes in services and Specs">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/MatchFilterRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchFilterService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/groovy/com/fotistsiskakis/betstrategist/services/MatchFilterServiceSpec.groovy" afterDir="false" />
+    <list default="true" id="ec43c93e-c823-4c24-b43c-32051a9bc91b" name="Changes" comment="Added the MatchFilterService and it's spec and removed getMatch... because they are no longer needed">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/UpdateMatchRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchOddsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchOddsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/exceptions/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/exceptions/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/Match.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/repositories/MatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/repositories/MatchRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/com/fotistsiskakis/betstrategist/MatchOddsServiceSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/com/fotistsiskakis/betstrategist/services/MatchOddsServiceSpec.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/com/fotistsiskakis/betstrategist/MatchServiceSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/com/fotistsiskakis/betstrategist/services/MatchServiceSpec.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,17 +61,18 @@
       <recent name="$PROJECT_DIR$/src/test/groovy" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.fotistsiskakis.betstrategist.services" />
       <recent name="com.fotistsiskakis.betstrategist" />
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MatchFilterServiceSpec.Test getFilteredMatches with filter criteria #filterCriteria">
+  <component name="RunManager" selected="JUnit.MatchServiceSpec.Test updating a match in MatchService">
     <configuration name="BetStrategist" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.BetStrategist" />
       <module name="BetStrategist" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.fotistsiskakis.betstrategist.*" />
+          <option name="PATTERN" value="com.fotistsiskakis.betstrategist.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -114,32 +111,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MatchOddsServiceSpec" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BetStrategist" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.fotistsiskakis.betstrategist.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.fotistsiskakis.betstrategist" />
-      <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.MatchOddsServiceSpec" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MatchServiceSpec.Test createMatch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BetStrategist" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.fotistsiskakis.betstrategist.*" />
+          <option name="PATTERN" value="com.fotistsiskakis.betstrategist.services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.fotistsiskakis.betstrategist" />
-      <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.MatchServiceSpec" />
+      <option name="PACKAGE_NAME" value="com.fotistsiskakis.betstrategist.services" />
+      <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.services.MatchServiceSpec" />
       <option name="METHOD_NAME" value="Test createMatch" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MatchServiceSpec.Test updating a match in MatchService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BetStrategist" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.fotistsiskakis.betstrategist.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.fotistsiskakis.betstrategist.services" />
+      <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.services.MatchServiceSpec" />
+      <option name="METHOD_NAME" value="Test updating a match in MatchService" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -178,16 +176,16 @@
       <item itemvalue="JUnit.MatchFilterServiceSpec" />
       <item itemvalue="JUnit.MatchFilterServiceSpec.Test getFilteredMatches with filter criteria #filterCriteria" />
       <item itemvalue="JUnit.MatchServiceSpec.Test createMatch" />
-      <item itemvalue="JUnit.MatchOddsServiceSpec" />
+      <item itemvalue="JUnit.MatchServiceSpec.Test updating a match in MatchService" />
       <item itemvalue="Maven.BetStrategist [clean,test...]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MatchServiceSpec.Test updating a match in MatchService" />
         <item itemvalue="Application.BetStrategist" />
         <item itemvalue="JUnit.MatchFilterServiceSpec.Test getFilteredMatches with filter criteria #filterCriteria" />
         <item itemvalue="JUnit.MatchFilterServiceSpec" />
         <item itemvalue="JUnit.MatchServiceSpec.Test createMatch" />
-        <item itemvalue="JUnit.MatchOddsServiceSpec" />
       </list>
     </recent_temporary>
   </component>
@@ -242,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695308862572</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added the MatchFilterService and it's spec and removed getMatch... because they are no longer needed">
+      <created>1695325288435</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1695325288435</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -263,7 +268,8 @@
     <MESSAGE value="Fixed MatchOddsService and now it saves the entities correctly. Also added unique constraint to match_id and specifier and made a more user friendly error for unique constaint violation." />
     <MESSAGE value="Implemented getMatchById and added MatchServiceSpec" />
     <MESSAGE value="Fixes in services and Specs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixes in services and Specs" />
+    <MESSAGE value="Added the MatchFilterService and it's spec and removed getMatch... because they are no longer needed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the MatchFilterService and it's spec and removed getMatch... because they are no longer needed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -287,6 +293,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsService.java</url>
           <line>24</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchService.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,4 +1,4 @@
-package com.fotistsiskakis.betstrategist
+package com.fotistsiskakis.betstrategist.services
 
 import com.fotistsiskakis.betstrategist.models.Match
 import com.fotistsiskakis.betstrategist.models.MatchOdds

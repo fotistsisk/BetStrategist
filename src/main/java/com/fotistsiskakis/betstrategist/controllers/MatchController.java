@@ -3,6 +3,7 @@ package com.fotistsiskakis.betstrategist.controllers;
 import com.fotistsiskakis.betstrategist.models.Match;
 import com.fotistsiskakis.betstrategist.models.requests.CreateMatchRequest;
 import com.fotistsiskakis.betstrategist.models.requests.MatchFilterRequest;
+import com.fotistsiskakis.betstrategist.models.requests.UpdateMatchRequest;
 import com.fotistsiskakis.betstrategist.models.responses.CreateMatchResponse;
 import com.fotistsiskakis.betstrategist.services.MatchFilterService;
 import com.fotistsiskakis.betstrategist.services.MatchService;
@@ -33,5 +34,11 @@ public class MatchController {
     public ResponseEntity<List<Match>> getFilteredMatches(MatchFilterRequest matchFilterRequest) {
         List<Match> matches = matchFilterService.getFilteredMatches(matchFilterRequest);
         return new ResponseEntity<>(matches, HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Match> updateMatch(@PathVariable UUID id, @RequestBody UpdateMatchRequest updateMatchRequest) {
+        Match updatedMatch = matchService.updateMatch(id, updateMatchRequest);
+        return new ResponseEntity<>(updatedMatch, HttpStatus.OK);
     }
 }

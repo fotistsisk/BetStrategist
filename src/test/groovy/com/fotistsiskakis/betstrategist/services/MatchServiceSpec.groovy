@@ -1,8 +1,9 @@
-package com.fotistsiskakis.betstrategist
+package com.fotistsiskakis.betstrategist.services
 
 import com.fotistsiskakis.betstrategist.models.Match
 import com.fotistsiskakis.betstrategist.models.Sport
 import com.fotistsiskakis.betstrategist.models.requests.CreateMatchRequest
+import com.fotistsiskakis.betstrategist.models.requests.UpdateMatchRequest
 import com.fotistsiskakis.betstrategist.repositories.MatchRepository
 import com.fotistsiskakis.betstrategist.services.MatchService
 import jakarta.persistence.EntityNotFoundException
@@ -62,8 +63,45 @@ class MatchServiceSpec extends Specification {
         def response = matchService.createMatch(request)
 
         then:
-
-
         response.getId() == match.getId()
+    }
+
+    def "Test updating a match in MatchService"() {
+        given:
+        def id = UUID.fromString("99ae700e-fd2f-461b-bf54-ae962751d50a")
+        Match match = Match.builder()
+                .id(id)
+                .description("Sample Match")
+                .matchDate(LocalDate.parse("2023-09-20"))
+                .matchTime(LocalTime.parse("18:30:00"))
+                .teamA("Team Fotis")
+                .teamB("Team Bravo")
+                .sport(Sport.FOOTBALL)
+                .build()
+        def updateMatchRequest = UpdateMatchRequest.builder()
+                .description("New Sample Match")
+                .matchDate(LocalDate.parse("2023-09-21"))
+                .matchTime(LocalTime.parse("18:30:02"))
+                .teamA("Team Fotis 2")
+                .teamB("Team Bravo 2")
+                .sport(Sport.BASKETBALL)
+                .build()
+        Match updatedMatch = Match.builder()
+                .id(id)
+                .description("New Sample Match")
+                .matchDate(LocalDate.parse("2023-09-21"))
+                .matchTime(LocalTime.parse("18:30:02"))
+                .teamA("Team Fotis 2")
+                .teamB("Team Bravo 2")
+                .sport(Sport.BASKETBALL)
+                .build()
+
+        1 * matchRepository.findById(id) >> Optional.of(match)
+
+        when:
+        matchService.updateMatch(id, updateMatchRequest)
+
+        then:
+        1 * matchRepository.save(updatedMatch)
     }
 }
