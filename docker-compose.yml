@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=fksKBybsHJs#34
+      - POSTGRES_USER=fotistsiskakis
+      - POSTGRES_DB=bet_strategist
