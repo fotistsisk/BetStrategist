@@ -55,8 +55,8 @@ class MatchServiceSpec extends Specification {
                 .teamA("teamA")
                 .teamB("teamB")
                 .build()
-        1 * modelMapper.map(request, Match.class) >> match
-        1 * matchRepository.save(match) >> matchWithUuid
+        1 * modelMapper.map(request, Match.class) >> matchWithUuid
+        1 * matchRepository.save(matchWithUuid) >> match
 
         when:
         def response = matchService.createMatch(request)

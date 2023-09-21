@@ -20,7 +20,7 @@ public class MatchService {
 
     public CreateMatchResponse createMatch(CreateMatchRequest request) {
         Match match = modelMapper.map(request, Match.class);
-        matchRepository.save(match);
+        match = matchRepository.save(match);
         return CreateMatchResponse.builder()
                 .id(match.getId())
                 .build();

@@ -27,7 +27,7 @@ public class MatchOddsService {
                 .specifier(request.getSpecifier())
                 .build();
         log.debug(String.format("Saving %s matchOdds object in db", matchOdds));
-        matchOddsRepository.save(matchOdds);
+        matchOdds = matchOddsRepository.save(matchOdds);
         return  CreateMatchOddsResponse.builder()
                 .id(matchOdds.getId())
                 .build();

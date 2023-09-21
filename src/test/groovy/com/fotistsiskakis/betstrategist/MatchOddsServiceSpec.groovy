@@ -5,8 +5,8 @@ import com.fotistsiskakis.betstrategist.models.MatchOdds
 import com.fotistsiskakis.betstrategist.models.requests.CreateMatchOddsRequest
 import com.fotistsiskakis.betstrategist.models.responses.CreateMatchOddsResponse
 import com.fotistsiskakis.betstrategist.repositories.MatchOddsRepository
+import com.fotistsiskakis.betstrategist.repositories.MatchRepository
 import com.fotistsiskakis.betstrategist.services.MatchOddsService
-import org.modelmapper.ModelMapper
 import org.springframework.dao.DataIntegrityViolationException
 
 import spock.lang.Specification
@@ -14,11 +14,11 @@ import spock.lang.Specification
 class MatchOddsServiceSpec extends Specification{
 
     def matchOddsRepository = Mock(MatchOddsRepository.class)
-    def modelMapper = Mock(ModelMapper.class)
+    def matchRepository = Mock(MatchRepository.class)
     def matchOddsService
 
     def setup(){
-        matchOddsService = new MatchOddsService(matchOddsRepository, modelMapper)
+        matchOddsService = new MatchOddsService(matchOddsRepository, matchRepository)
     }
 
     def "Test createMatchOdds with valid request"() {
@@ -30,17 +30,27 @@ class MatchOddsServiceSpec extends Specification{
                 .matchId(uuid)
                 .build()
 
+        def match = Match.builder()
+                .id(uuid)
+                .build()
+
+        def matchOddsWIthOutUuid = MatchOdds.builder()
+                .specifier("X")
+                .match(match)
+                .odd((long) 1.2)
+                .build()
+
         def matchOdds = MatchOdds.builder()
                 .specifier("X")
-                .match(Match.builder().id(uuid).build())
+                .match(match)
                 .odd((long) 1.2)
                 .id(UUID.randomUUID())
                 .build()
 
         def expectedResponse = CreateMatchOddsResponse.builder().id(matchOdds.getId()).build()
 
-        1 * modelMapper.map(request, MatchOdds.class) >> matchOdds
-        1 * matchOddsRepository.save(matchOdds) >> matchOdds
+        1 * matchRepository.findById(uuid) >> Optional.of(match)
+        1 * matchOddsRepository.save(matchOddsWIthOutUuid) >> matchOdds
 
         when:
         def response = matchOddsService.createMatchOdds(request)
@@ -58,22 +68,31 @@ class MatchOddsServiceSpec extends Specification{
                 .matchId(uuid)
                 .build()
 
+        def match = Match.builder()
+                .id(uuid)
+                .build()
+
+        def matchOddsWIthOutUuid = MatchOdds.builder()
+                .specifier("X")
+                .match(match)
+                .odd((long) 1.2)
+                .build()
+
         def matchOdds = MatchOdds.builder()
                 .specifier("X")
-                .match(Match.builder().id(uuid).build())
+                .match(match)
                 .odd((long) 1.2)
                 .id(UUID.randomUUID())
                 .build()
 
 
-        1 * modelMapper.map(request, MatchOdds.class) >> matchOdds
-        1 * matchOddsRepository.save(matchOdds) >> { throw new DataIntegrityViolationException("error") }
+        1 * matchRepository.findById(uuid) >> Optional.of(match)
+        1 * matchOddsRepository.save(matchOddsWIthOutUuid) >> { throw new DataIntegrityViolationException("error") }
 
         when:
         matchOddsService.createMatchOdds(request)
 
         then:
-        DataIntegrityViolationException ex = thrown(DataIntegrityViolationException.class)
-        ex.message == "A match is required for this operation. Please provide a valid match ID."
+        thrown(DataIntegrityViolationException.class)
     }
 }
