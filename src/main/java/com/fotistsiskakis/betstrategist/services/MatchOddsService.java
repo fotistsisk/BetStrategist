@@ -11,6 +11,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -31,5 +34,15 @@ public class MatchOddsService {
         return  CreateMatchOddsResponse.builder()
                 .id(matchOdds.getId())
                 .build();
+    }
+
+    public MatchOdds getMatchOddsById(UUID id) {
+        Optional<MatchOdds> matchOddsOptional = matchOddsRepository.findById(id);
+
+        if (matchOddsOptional.isPresent()) {
+            return matchOddsOptional.get();
+        } else {
+            throw new EntityNotFoundException();
+        }
     }
 }

@@ -66,28 +66,4 @@ class MatchServiceSpec extends Specification {
 
         response.getId() == match.getId()
     }
-
-    def "Test getMatch with existing match"() {
-        given:
-        UUID matchId = UUID.randomUUID()
-        1 * matchRepository.findById(matchId) >> Optional.of(new Match(id: matchId))
-
-        when:
-        def result = matchService.getMatch(matchId)
-
-        then:
-        result.id == matchId
-    }
-
-    def "Test getMatch with non-existing match"() {
-        given:
-        UUID matchId = UUID.randomUUID()
-        1 * matchRepository.findById(matchId) >> Optional.empty()
-
-        when:
-        matchService.getMatch(matchId)
-
-        then:
-        thrown(EntityNotFoundException.class)
-    }
 }

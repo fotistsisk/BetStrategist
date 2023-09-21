@@ -42,7 +42,7 @@ public class Match {
     @NotNull
     private String teamA;
 
-    @Column(name = "last_b")
+    @Column(name = "team_b")
     @NotNull
     private String teamB;
 
