@@ -2,12 +2,14 @@ package com.fotistsiskakis.betstrategist.models.requests;
 
 import com.fotistsiskakis.betstrategist.models.Sport;
 import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Data
+@Builder
 public class CreateMatchRequest {
 
     @NotNull(message = "description cannot be null")

@@ -2,6 +2,7 @@ package com.fotistsiskakis.betstrategist.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotNull;
@@ -11,6 +12,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "match_odds")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class MatchOdds {

@@ -2,6 +2,7 @@ package com.fotistsiskakis.betstrategist.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "matches")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Match {
