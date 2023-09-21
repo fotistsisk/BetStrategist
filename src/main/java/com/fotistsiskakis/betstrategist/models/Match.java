@@ -10,15 +10,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "matches")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "matches")
 public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -51,7 +50,4 @@ public class Match {
     @Enumerated(EnumType.ORDINAL)
     @NotNull
     private Sport sport;
-
-    @OneToMany(mappedBy = "match", cascade = CascadeType.ALL)
-    private List<MatchOdds> matchOddsList;
 }

@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
@@ -14,5 +15,5 @@ public class CreateMatchOddsRequest {
     @NotNull(message = "specifier cannot be null")
     private String specifier;
     @NotNull(message = "odd cannot be null")
-    private Long odd;
+    private BigDecimal odd;
 }

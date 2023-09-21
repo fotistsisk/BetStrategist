@@ -7,14 +7,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotNull;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
-@Table(name = "match_odds")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "match_odds", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"match_id", "specifier"})
+})
 public class MatchOdds {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -22,7 +25,8 @@ public class MatchOdds {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "match_id", nullable = false, insertable = false, updatable = false)
+    @NotNull
+    @JoinColumn(name = "match_id")
     private Match match;
 
     @Column(name = "specifier")
@@ -31,5 +35,5 @@ public class MatchOdds {
 
     @Column(name = "odd")
     @NotNull
-    private Long odd;
+    private BigDecimal odd;
 }

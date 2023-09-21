@@ -1,13 +1,15 @@
 package com.fotistsiskakis.betstrategist.services;
 
+import com.fotistsiskakis.betstrategist.models.Match;
 import com.fotistsiskakis.betstrategist.models.MatchOdds;
 import com.fotistsiskakis.betstrategist.models.requests.CreateMatchOddsRequest;
 import com.fotistsiskakis.betstrategist.models.responses.CreateMatchOddsResponse;
 import com.fotistsiskakis.betstrategist.repositories.MatchOddsRepository;
+import com.fotistsiskakis.betstrategist.repositories.MatchRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -15,20 +17,21 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MatchOddsService {
     private final MatchOddsRepository matchOddsRepository;
+    private final MatchRepository matchRepository;
     private final ModelMapper modelMapper;
 
     public CreateMatchOddsResponse createMatchOdds(CreateMatchOddsRequest request){
-        MatchOdds matchOdds = modelMapper.map(request, MatchOdds.class);
+        Match match = matchRepository.findById(request.getMatchId())
+                .orElseThrow(() -> new EntityNotFoundException("Match not found with id: " + request.getMatchId()));
+        MatchOdds matchOdds = MatchOdds.builder()
+                .match(match)
+                .odd(request.getOdd())
+                .specifier(request.getSpecifier())
+                .build();
         log.debug(String.format("Saving %s matchOdds object in db", matchOdds));
-        try{
-            matchOddsRepository.save(matchOdds);
-            return  CreateMatchOddsResponse.builder()
-                    .id(matchOdds.getId())
-                    .build();
-         } catch (DataIntegrityViolationException e) {
-            log.error(String.format("Error while saving %s matchOdds object in db", matchOdds));
-            throw new DataIntegrityViolationException("A match is required for this operation. Please provide a valid match ID.");
-        }
-
+        matchOddsRepository.save(matchOdds);
+        return  CreateMatchOddsResponse.builder()
+                .id(matchOdds.getId())
+                .build();
     }
 }
