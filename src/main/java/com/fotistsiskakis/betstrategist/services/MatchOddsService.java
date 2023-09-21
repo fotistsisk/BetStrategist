@@ -9,7 +9,6 @@ import com.fotistsiskakis.betstrategist.repositories.MatchRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Service;
 public class MatchOddsService {
     private final MatchOddsRepository matchOddsRepository;
     private final MatchRepository matchRepository;
-    private final ModelMapper modelMapper;
 
     public CreateMatchOddsResponse createMatchOdds(CreateMatchOddsRequest request){
         Match match = matchRepository.findById(request.getMatchId())

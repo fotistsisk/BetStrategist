@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec43c93e-c823-4c24-b43c-32051a9bc91b" name="Changes" comment="Added specs functionality in maven test and created the first groovy spec MatchOddsServiceSpec.groovy">
+    <list default="true" id="ec43c93e-c823-4c24-b43c-32051a9bc91b" name="Changes" comment="Fixed MatchOddsService and now it saves the entities correctly. Also added unique constraint to match_id and specifier and made a more user friendly error for unique constaint violation.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/GetMatchRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/groovy/com/fotistsiskakis/betstrategist/MatchServiceSpec.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/exceptions/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/exceptions/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/Match.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/MatchOdds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/MatchOdds.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/CreateMatchOddsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/CreateMatchOddsRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +64,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BetStrategist">
+  <component name="RunManager" selected="JUnit.MatchServiceSpec.Test createMatch">
     <configuration name="BetStrategist" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.BetStrategist" />
       <module name="BetStrategist" />
@@ -101,33 +101,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MatchOddsServiceSpec.Test createMatchOdds with invalid request - matchId doesn't exist in match table" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MatchServiceSpec" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BetStrategist" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value=".*" />
+          <option name="PATTERN" value="com.fotistsiskakis.betstrategist.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.fotistsiskakis.betstrategist" />
-      <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.MatchOddsServiceSpec" />
-      <option name="METHOD_NAME" value="Test createMatchOdds with invalid request - matchId doesn't exist in match table" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.MatchServiceSpec" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MatchOddsServiceSpec.Test createMatchOdds with valid request" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MatchServiceSpec.Test createMatch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BetStrategist" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value=".*" />
+          <option name="PATTERN" value="com.fotistsiskakis.betstrategist.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.fotistsiskakis.betstrategist" />
-      <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.MatchOddsServiceSpec" />
-      <option name="METHOD_NAME" value="Test createMatchOdds with valid request" />
+      <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.MatchServiceSpec" />
+      <option name="METHOD_NAME" value="Test createMatch" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -164,18 +163,18 @@
     <list>
       <item itemvalue="Application.BetStrategist" />
       <item itemvalue="JUnit.MatchOddsServiceSpec (1)" />
+      <item itemvalue="JUnit.MatchServiceSpec" />
+      <item itemvalue="JUnit.MatchServiceSpec.Test createMatch" />
       <item itemvalue="JUnit.MatchOddsServiceSpec" />
-      <item itemvalue="JUnit.MatchOddsServiceSpec.Test createMatchOdds with invalid request - matchId doesn't exist in match table" />
-      <item itemvalue="JUnit.MatchOddsServiceSpec.Test createMatchOdds with valid request" />
       <item itemvalue="Maven.BetStrategist [clean,test...]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MatchServiceSpec.Test createMatch" />
+        <item itemvalue="JUnit.MatchServiceSpec" />
         <item itemvalue="Application.BetStrategist" />
         <item itemvalue="JUnit.MatchOddsServiceSpec (1)" />
         <item itemvalue="JUnit.MatchOddsServiceSpec" />
-        <item itemvalue="JUnit.MatchOddsServiceSpec.Test createMatchOdds with invalid request - matchId doesn't exist in match table" />
-        <item itemvalue="JUnit.MatchOddsServiceSpec.Test createMatchOdds with valid request" />
       </list>
     </recent_temporary>
   </component>
@@ -209,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695290060183</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed MatchOddsService and now it saves the entities correctly. Also added unique constraint to match_id and specifier and made a more user friendly error for unique constaint violation.">
+      <created>1695303787050</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1695303787050</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -227,20 +233,26 @@
     <MESSAGE value="Initialize Project Structure" />
     <MESSAGE value="Added Match and MatchOdds classes with their repos so the db is created correctly. Also added services for creating match and match odds and created global exception for both notNull violations and for invalid matchId violdation." />
     <MESSAGE value="Added specs functionality in maven test and created the first groovy spec MatchOddsServiceSpec.groovy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added specs functionality in maven test and created the first groovy spec MatchOddsServiceSpec.groovy" />
+    <MESSAGE value="Fixed MatchOddsService and now it saves the entities correctly. Also added unique constraint to match_id and specifier and made a more user friendly error for unique constaint violation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed MatchOddsService and now it saves the entities correctly. Also added unique constraint to match_id and specifier and made a more user friendly error for unique constaint violation." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/exceptions/GlobalExceptionHandler.java</url>
-          <line>42</line>
+          <line>50</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/exceptions/GlobalExceptionHandler.java</url>
           <line>35</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/exceptions/GlobalExceptionHandler.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
