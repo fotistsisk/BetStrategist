@@ -1,9 +1,7 @@
 package com.fotistsiskakis.betstrategist.controllers;
 
-import com.fotistsiskakis.betstrategist.models.Match;
 import com.fotistsiskakis.betstrategist.models.MatchOdds;
 import com.fotistsiskakis.betstrategist.models.requests.CreateMatchOddsRequest;
-import com.fotistsiskakis.betstrategist.models.requests.GetMatchFilterRequest;
 import com.fotistsiskakis.betstrategist.models.requests.GetMatchOddsFilterRequest;
 import com.fotistsiskakis.betstrategist.models.responses.CreateMatchOddsResponse;
 import com.fotistsiskakis.betstrategist.services.MatchOddsFilterService;

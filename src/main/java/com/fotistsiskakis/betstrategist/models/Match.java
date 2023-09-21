@@ -1,5 +1,7 @@
 package com.fotistsiskakis.betstrategist.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -17,6 +20,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Table(name = "matches")
 public class Match {
     @Id
@@ -50,4 +54,7 @@ public class Match {
     @Enumerated(EnumType.ORDINAL)
     @NotNull
     private Sport sport;
+
+    @OneToMany(fetch=FetchType.LAZY, mappedBy = "match", cascade = CascadeType.ALL,  orphanRemoval = true)
+    private List<MatchOdds> matchOddsList;
 }

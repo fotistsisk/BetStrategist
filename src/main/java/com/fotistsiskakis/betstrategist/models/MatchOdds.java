@@ -1,10 +1,10 @@
 package com.fotistsiskakis.betstrategist.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import javax.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
@@ -16,7 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "match_odds", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"match_id", "specifier"})
+        @UniqueConstraint(columnNames = {"match.id", "specifier"})
 })
 public class MatchOdds {
     @Id
@@ -24,9 +24,11 @@ public class MatchOdds {
     @Column(name = "id")
     private UUID id;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @NotNull
-    @JoinColumn(name = "match_id")
+    @ToString.Exclude
+    @JsonIdentityReference(alwaysAsId = true)
+    @JoinColumn(name = "match.id")
     private Match match;
 
     @Column(name = "specifier")
