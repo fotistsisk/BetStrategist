@@ -7,8 +7,8 @@ import java.util.UUID;
 
 @Data
 @Builder
-public class MatchFilterRequest {
-    private UUID id;
+public class GetMatchFilterRequest {
+    private String id;
     private String description;
     private String matchDate;
     private String matchTime;

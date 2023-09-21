@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec43c93e-c823-4c24-b43c-32051a9bc91b" name="Changes" comment="Added updateMatch to MatchController and to MatchService. Also specs.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/Utils.java" afterDir="false" />
+    <list default="true" id="ec43c93e-c823-4c24-b43c-32051a9bc91b" name="Changes" comment="Added deleteMatch to MatchController and to MatchService. Added utils to check if uuids in requests are valid(in controllers). Also specs.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/GetMatchOddsFilterRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsFilterService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/repositories/MatchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/repositories/MatchRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchOddsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchOddsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/GetMatchRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/MatchFilterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/GetMatchFilterRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/repositories/MatchOddsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/repositories/MatchOddsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchFilterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchFilterService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/com/fotistsiskakis/betstrategist/services/MatchServiceSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/com/fotistsiskakis/betstrategist/services/MatchServiceSpec.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/com/fotistsiskakis/betstrategist/services/MatchFilterServiceSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/com/fotistsiskakis/betstrategist/services/MatchFilterServiceSpec.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +70,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UtilsSpec">
+  <component name="RunManager" selected="Application.BetStrategist">
     <configuration name="BetStrategist" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.BetStrategist" />
       <module name="BetStrategist" />
@@ -179,9 +184,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BetStrategist" />
         <item itemvalue="JUnit.UtilsSpec" />
         <item itemvalue="JUnit.MatchServiceSpec" />
-        <item itemvalue="Application.BetStrategist" />
         <item itemvalue="JUnit.MatchServiceSpec.Test updating a match in MatchService" />
         <item itemvalue="JUnit.MatchFilterServiceSpec.Test getFilteredMatches with filter criteria #filterCriteria" />
       </list>
@@ -252,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695326745561</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added deleteMatch to MatchController and to MatchService. Added utils to check if uuids in requests are valid(in controllers). Also specs.">
+      <created>1695328337822</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1695328337822</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -275,7 +287,8 @@
     <MESSAGE value="Fixes in services and Specs" />
     <MESSAGE value="Added the MatchFilterService and it's spec and removed getMatch... because they are no longer needed" />
     <MESSAGE value="Added updateMatch to MatchController and to MatchService. Also specs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added updateMatch to MatchController and to MatchService. Also specs." />
+    <MESSAGE value="Added deleteMatch to MatchController and to MatchService. Added utils to check if uuids in requests are valid(in controllers). Also specs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added deleteMatch to MatchController and to MatchService. Added utils to check if uuids in requests are valid(in controllers). Also specs." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -302,8 +315,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchService.java</url>
-          <line>47</line>
+          <line>46</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsFilterService.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsFilterService.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

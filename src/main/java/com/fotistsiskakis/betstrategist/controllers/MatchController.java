@@ -2,7 +2,7 @@ package com.fotistsiskakis.betstrategist.controllers;
 
 import com.fotistsiskakis.betstrategist.models.Match;
 import com.fotistsiskakis.betstrategist.models.requests.CreateMatchRequest;
-import com.fotistsiskakis.betstrategist.models.requests.MatchFilterRequest;
+import com.fotistsiskakis.betstrategist.models.requests.GetMatchFilterRequest;
 import com.fotistsiskakis.betstrategist.models.requests.UpdateMatchRequest;
 import com.fotistsiskakis.betstrategist.models.responses.CreateMatchResponse;
 import com.fotistsiskakis.betstrategist.services.MatchFilterService;
@@ -15,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -32,8 +31,8 @@ public class MatchController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Match>> getFilteredMatches(MatchFilterRequest matchFilterRequest) {
-        List<Match> matches = matchFilterService.getFilteredMatches(matchFilterRequest);
+    public ResponseEntity<List<Match>> getFilteredMatches(GetMatchFilterRequest getMatchFilterRequest) {
+        List<Match> matches = matchFilterService.getFilteredMatches(getMatchFilterRequest);
         return new ResponseEntity<>(matches, HttpStatus.OK);
     }
 

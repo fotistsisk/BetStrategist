@@ -3,7 +3,7 @@ package com.fotistsiskakis.betstrategist.services
 import spock.lang.Specification
 import com.fotistsiskakis.betstrategist.models.Match
 import com.fotistsiskakis.betstrategist.repositories.MatchRepository
-import com.fotistsiskakis.betstrategist.models.requests.MatchFilterRequest
+import com.fotistsiskakis.betstrategist.models.requests.GetMatchFilterRequest
 
 class MatchFilterServiceSpec extends Specification {
 
@@ -24,7 +24,7 @@ class MatchFilterServiceSpec extends Specification {
 
     def "Test getFilteredMatches when request has no filter criteria"() {
         when:
-        MatchFilterRequest filterRequest = MatchFilterRequest.builder().build()
+        GetMatchFilterRequest filterRequest = GetMatchFilterRequest.builder().build()
         List<Match> result = matchFilterService.getFilteredMatches(filterRequest)
 
         then:

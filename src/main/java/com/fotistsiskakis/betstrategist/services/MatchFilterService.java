@@ -2,7 +2,7 @@ package com.fotistsiskakis.betstrategist.services;
 
 import com.fotistsiskakis.betstrategist.models.Match;
 import com.fotistsiskakis.betstrategist.models.Sport;
-import com.fotistsiskakis.betstrategist.models.requests.MatchFilterRequest;
+import com.fotistsiskakis.betstrategist.models.requests.GetMatchFilterRequest;
 import com.fotistsiskakis.betstrategist.repositories.MatchRepository;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.Path;
@@ -21,7 +21,7 @@ public class MatchFilterService {
 
     private MatchRepository matchRepository;
 
-    public List<Match> getFilteredMatches(MatchFilterRequest filterRequest) {
+    public List<Match> getFilteredMatches(GetMatchFilterRequest filterRequest) {
         if(isRequestNullOrEmpty(filterRequest)){
             return matchRepository.findAll();
         }
@@ -29,7 +29,7 @@ public class MatchFilterService {
         return matchRepository.findAll((root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
 
-            addPredicate(filterRequest.getId(), root.get("id"), predicates, cb);
+            addPredicate(Utils.getUuidFromString(filterRequest.getId()), root.get("id"), predicates, cb);
             addPredicate(filterRequest.getDescription(), root.get("description"), predicates, cb);
             if (filterRequest.getMatchDate() != null) {
                 LocalDate matchDate = LocalDate.parse(filterRequest.getMatchDate());
@@ -71,7 +71,7 @@ public class MatchFilterService {
         }
     }
 
-    private static boolean isRequestNullOrEmpty(MatchFilterRequest filterRequest) {
+    private static boolean isRequestNullOrEmpty(GetMatchFilterRequest filterRequest) {
         return filterRequest == null ||
                 (filterRequest.getId() == null &&
                         filterRequest.getDescription() == null &&
