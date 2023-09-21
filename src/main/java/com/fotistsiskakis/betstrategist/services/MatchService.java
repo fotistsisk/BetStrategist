@@ -9,8 +9,10 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -39,4 +41,15 @@ public class MatchService {
 
         return matchRepository.save(existingMatch);
     }
+
+    public void deleteMatch(UUID id) {
+        Optional<Match> existingMatch = matchRepository.findById(id);
+
+        if (existingMatch.isPresent()) {
+            matchRepository.deleteById(id);
+        } else {
+            throw new EntityNotFoundException("Match not found with id: " + id);
+        }
+    }
+
 }

@@ -7,6 +7,7 @@ import com.fotistsiskakis.betstrategist.models.requests.UpdateMatchRequest;
 import com.fotistsiskakis.betstrategist.models.responses.CreateMatchResponse;
 import com.fotistsiskakis.betstrategist.services.MatchFilterService;
 import com.fotistsiskakis.betstrategist.services.MatchService;
+import com.fotistsiskakis.betstrategist.services.Utils;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -37,8 +38,14 @@ public class MatchController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Match> updateMatch(@PathVariable UUID id, @RequestBody UpdateMatchRequest updateMatchRequest) {
-        Match updatedMatch = matchService.updateMatch(id, updateMatchRequest);
+    public ResponseEntity<Match> updateMatch(@PathVariable String id, @RequestBody UpdateMatchRequest updateMatchRequest) {
+        Match updatedMatch = matchService.updateMatch(Utils.getUuidFromString(id), updateMatchRequest);
         return new ResponseEntity<>(updatedMatch, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteMatch(@PathVariable String id) {
+        matchService.deleteMatch(Utils.getUuidFromString(id));
+        return ResponseEntity.noContent().build();
     }
 }

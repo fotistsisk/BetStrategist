@@ -5,7 +5,6 @@ import com.fotistsiskakis.betstrategist.models.Sport
 import com.fotistsiskakis.betstrategist.models.requests.CreateMatchRequest
 import com.fotistsiskakis.betstrategist.models.requests.UpdateMatchRequest
 import com.fotistsiskakis.betstrategist.repositories.MatchRepository
-import com.fotistsiskakis.betstrategist.services.MatchService
 import jakarta.persistence.EntityNotFoundException
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.junit.jupiter.MockitoExtension
@@ -103,5 +102,40 @@ class MatchServiceSpec extends Specification {
 
         then:
         1 * matchRepository.save(updatedMatch)
+    }
+
+    def "Delete existing match by ID"() {
+        given:
+        UUID existingMatchId = UUID.randomUUID()
+        1 * matchRepository.findById(existingMatchId) >> Optional.of(Match.builder()
+                .id(existingMatchId)
+                .description("Sample Match")
+                .matchDate(LocalDate.parse("2023-09-20"))
+                .matchTime(LocalTime.parse("18:30:00"))
+                .teamA("Team Fotis")
+                .teamB("Team Bravo")
+                .sport(Sport.FOOTBALL)
+                .build())
+
+        when:
+        matchService.deleteMatch(existingMatchId)
+
+        then:
+        1 * matchRepository.deleteById(existingMatchId)
+    }
+
+    def "Attempt to delete non-existing match"() {
+        given:
+        UUID nonExistingMatchId = UUID.randomUUID()
+
+        1 * matchRepository.findById(nonExistingMatchId) >> Optional.empty()
+
+        when:
+        matchService.deleteMatch(nonExistingMatchId)
+
+        then:
+        0 * matchRepository.deleteById(nonExistingMatchId)
+        def exception = thrown(EntityNotFoundException.class)
+        exception.message == "Match not found with id: ${nonExistingMatchId}"
     }
 }
