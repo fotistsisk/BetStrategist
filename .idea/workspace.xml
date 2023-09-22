@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec43c93e-c823-4c24-b43c-32051a9bc91b" name="Changes" comment="Added specs for both controllers">
+    <list default="true" id="ec43c93e-c823-4c24-b43c-32051a9bc91b" name="Changes" comment="Fixed minor bug in MatchFilterService which didn't check if the uuid string was null before passing it in Utils.getUuidFromString.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/constants/Constants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/exceptions/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/exceptions/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/groovy/com/fotistsiskakis/betstrategist/services/MatchServiceSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/com/fotistsiskakis/betstrategist/services/MatchServiceSpec.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchOddsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchOddsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/MatchOdds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/MatchOdds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/CreateMatchOddsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/CreateMatchOddsRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsFilterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsFilterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -301,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695417679158</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Fixed minor bug in MatchFilterService which didn't check if the uuid string was null before passing it in Utils.getUuidFromString.">
+      <created>1695419253179</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1695419253179</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -331,7 +343,8 @@
     <MESSAGE value="Added updateMatchOdds to controller and service. Also specs. The update is the same is in Match where the user can add any parameters they want and the service will update only what's provided" />
     <MESSAGE value="Added delete of MatchOdds. Also specs." />
     <MESSAGE value="Added specs for both controllers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added specs for both controllers" />
+    <MESSAGE value="Fixed minor bug in MatchFilterService which didn't check if the uuid string was null before passing it in Utils.getUuidFromString." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed minor bug in MatchFilterService which didn't check if the uuid string was null before passing it in Utils.getUuidFromString." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -358,12 +371,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsFilterService.java</url>
-          <line>22</line>
+          <line>21</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsFilterService.java</url>
-          <line>35</line>
+          <line>34</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -372,19 +385,14 @@
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchController.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchFilterService.java</url>
-          <line>46</line>
+          <line>48</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchFilterService.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="29" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/config/AppConfig.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

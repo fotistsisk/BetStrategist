@@ -1,7 +1,6 @@
 package com.fotistsiskakis.betstrategist.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
