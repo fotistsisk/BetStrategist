@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec43c93e-c823-4c24-b43c-32051a9bc91b" name="Changes" comment="Removed redundant controller for getMatchOddsById">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/UpdateMatchOddsRequest.java" afterDir="false" />
+    <list default="true" id="ec43c93e-c823-4c24-b43c-32051a9bc91b" name="Changes" comment="Added updateMatchOdds to controller and service. Also specs. The update is the same is in Match where the user can add any parameters they want and the service will update only what's provided">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchOddsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchOddsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/GetMatchFilterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/GetMatchFilterRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/GetMatchOddsFilterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/GetMatchOddsFilterRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/groovy/com/fotistsiskakis/betstrategist/services/MatchOddsServiceSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/com/fotistsiskakis/betstrategist/services/MatchOddsServiceSpec.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +64,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MatchOddsServiceSpec.Update Match Odds - no match found">
+  <component name="RunManager" selected="JUnit.MatchOddsServiceSpec">
     <configuration name="BetStrategist" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.BetStrategist" />
       <module name="BetStrategist" />
@@ -80,7 +78,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MatchOddsServiceSpec.Update Match Odds - Update Match Specifier and Odd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MatchOddsServiceSpec" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BetStrategist" />
       <extension name="coverage">
         <pattern>
@@ -90,7 +88,38 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.fotistsiskakis.betstrategist.services" />
       <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.services.MatchOddsServiceSpec" />
-      <option name="METHOD_NAME" value="Update Match Odds - Update Match Specifier and Odd" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MatchOddsServiceSpec.Delete existing match odds by ID" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BetStrategist" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.fotistsiskakis.betstrategist.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.fotistsiskakis.betstrategist.services" />
+      <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.services.MatchOddsServiceSpec" />
+      <option name="METHOD_NAME" value="Delete existing match odds by ID" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MatchOddsServiceSpec.Test createMatchOdds with valid request" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BetStrategist" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.fotistsiskakis.betstrategist.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.fotistsiskakis.betstrategist.services" />
+      <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.services.MatchOddsServiceSpec" />
+      <option name="METHOD_NAME" value="Test createMatchOdds with valid request" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -108,37 +137,6 @@
       <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.services.MatchOddsServiceSpec" />
       <option name="METHOD_NAME" value="Update Match Odds - no match found" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MatchOddsServiceSpec.Update Match Odds - no match odds found" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BetStrategist" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.fotistsiskakis.betstrategist.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.fotistsiskakis.betstrategist.services" />
-      <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.services.MatchOddsServiceSpec" />
-      <option name="METHOD_NAME" value="Update Match Odds - no match odds found" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UtilsSpec" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BetStrategist" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.fotistsiskakis.betstrategist.services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.fotistsiskakis.betstrategist.services" />
-      <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.services.UtilsSpec" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -173,19 +171,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.BetStrategist" />
-      <item itemvalue="JUnit.MatchOddsServiceSpec.Update Match Odds - Update Match Specifier and Odd" />
+      <item itemvalue="JUnit.MatchOddsServiceSpec.Delete existing match odds by ID" />
       <item itemvalue="JUnit.MatchOddsServiceSpec.Update Match Odds - no match found" />
-      <item itemvalue="JUnit.MatchOddsServiceSpec.Update Match Odds - no match odds found" />
-      <item itemvalue="JUnit.UtilsSpec" />
+      <item itemvalue="JUnit.MatchOddsServiceSpec" />
+      <item itemvalue="JUnit.MatchOddsServiceSpec.Test createMatchOdds with valid request" />
       <item itemvalue="Maven.BetStrategist [clean,test...]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MatchOddsServiceSpec.Update Match Odds - no match found" />
-        <item itemvalue="JUnit.MatchOddsServiceSpec.Update Match Odds - no match odds found" />
-        <item itemvalue="JUnit.MatchOddsServiceSpec.Update Match Odds - Update Match Specifier and Odd" />
         <item itemvalue="Application.BetStrategist" />
-        <item itemvalue="JUnit.UtilsSpec" />
+        <item itemvalue="JUnit.MatchOddsServiceSpec" />
+        <item itemvalue="JUnit.MatchOddsServiceSpec.Test createMatchOdds with valid request" />
+        <item itemvalue="JUnit.MatchOddsServiceSpec.Delete existing match odds by ID" />
+        <item itemvalue="JUnit.MatchOddsServiceSpec.Update Match Odds - no match found" />
       </list>
     </recent_temporary>
   </component>
@@ -282,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695376054258</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added updateMatchOdds to controller and service. Also specs. The update is the same is in Match where the user can add any parameters they want and the service will update only what's provided">
+      <created>1695395373014</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1695395373014</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -309,7 +314,8 @@
     <MESSAGE value="Added MatchOddsFilterService and the corresponding controller method for filtering matchOdds based on any property of the  MatchOdds object." />
     <MESSAGE value="Realized that we need matchOddsList in every match so now the response of every match contains its odds. also every odd now contains only its matchId." />
     <MESSAGE value="Removed redundant controller for getMatchOddsById" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed redundant controller for getMatchOddsById" />
+    <MESSAGE value="Added updateMatchOdds to controller and service. Also specs. The update is the same is in Match where the user can add any parameters they want and the service will update only what's provided" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added updateMatchOdds to controller and service. Also specs. The update is the same is in Match where the user can add any parameters they want and the service will update only what's provided" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -346,7 +352,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsService.java</url>
-          <line>39</line>
+          <line>40</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>

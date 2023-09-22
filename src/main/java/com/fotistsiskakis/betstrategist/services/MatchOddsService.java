@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
@@ -57,4 +58,13 @@ public class MatchOddsService {
         return matchOddsRepository.save(existingOdds);
     }
 
+    public void deleteMatchOdds(UUID id) {
+        Optional<MatchOdds> existingMatchOdds = matchOddsRepository.findById(id);
+
+        if (existingMatchOdds.isPresent()) {
+            matchOddsRepository.deleteById(id);
+        } else {
+            throw new EntityNotFoundException("Match Odds not found with id: " + id);
+        }
+    }
 }

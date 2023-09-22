@@ -50,5 +50,4 @@ public class MatchService {
             throw new EntityNotFoundException("Match not found with id: " + id);
         }
     }
-
 }

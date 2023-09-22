@@ -40,8 +40,14 @@ public class MatchOddsController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MatchOdds> updateMatch(@PathVariable String id, @RequestBody UpdateMatchOddsRequest updateMatchOddsRequest) {
+    public ResponseEntity<MatchOdds> updateMatchOdds(@PathVariable String id, @RequestBody UpdateMatchOddsRequest updateMatchOddsRequest) {
         MatchOdds updatedMatch = matchOddsService.updateMatchOdds(Utils.getUuidFromString(id), updateMatchOddsRequest);
         return new ResponseEntity<>(updatedMatch, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteMatchOdds(@PathVariable String id) {
+        matchOddsService.deleteMatchOdds(Utils.getUuidFromString(id));
+        return ResponseEntity.noContent().build();
     }
 }

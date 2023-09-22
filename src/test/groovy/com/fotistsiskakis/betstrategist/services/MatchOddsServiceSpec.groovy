@@ -137,7 +137,7 @@ class MatchOddsServiceSpec extends Specification {
         then:
         updatedOdds.match == newMatch
         updatedOdds.specifier == (newSpecifier != null ? newSpecifier : oldSpecifier)
-        updatedOdds.odd == (newOdd !=null ? newOdd : oldOdd)
+        updatedOdds.odd == (newOdd != null ? newOdd : oldOdd)
 
         where:
         newMatchUuid      | newSpecifier    | newOdd
@@ -195,5 +195,42 @@ class MatchOddsServiceSpec extends Specification {
         then:
         def ex = thrown(EntityNotFoundException.class)
         ex.getMessage() == "Match not found with id: ${newMatchId}"
+    }
+
+    def "Delete existing match odds by ID"() {
+        given:
+        UUID existingMatchOddsId = UUID.randomUUID()
+        def match = Match.builder()
+                .id(UUID.randomUUID())
+                .build()
+        MatchOdds existingMatchOdds = MatchOdds.builder()
+                .id(existingMatchOddsId)
+                .match(match)
+                .specifier("specifier")
+                .odd(BigDecimal.ONE)
+                .build()
+
+        1 * matchOddsRepository.findById(existingMatchOddsId) >> Optional.of(existingMatchOdds)
+
+        when:
+        matchOddsService.deleteMatchOdds(existingMatchOddsId)
+
+        then:
+        1 * matchOddsRepository.deleteById(existingMatchOddsId)
+    }
+
+    def "Attempt to delete non-existing match odds"() {
+        given:
+        UUID nonExistingMatchOddsId = UUID.randomUUID()
+
+        1 * matchOddsRepository.findById(nonExistingMatchOddsId) >> Optional.empty()
+
+        when:
+        matchOddsService.deleteMatchOdds(nonExistingMatchOddsId)
+
+        then:
+        0 * matchOddsRepository.deleteById(nonExistingMatchOddsId)
+        def ex = thrown(EntityNotFoundException.class)
+        ex.message == "Match Odds not found with id: ${nonExistingMatchOddsId}"
     }
 }
