@@ -1,5 +1,6 @@
 package com.fotistsiskakis.betstrategist.services
 
+import com.fasterxml.jackson.databind.util.BeanUtil
 import com.fotistsiskakis.betstrategist.models.Match
 import com.fotistsiskakis.betstrategist.models.Sport
 import com.fotistsiskakis.betstrategist.models.requests.CreateMatchRequest
@@ -9,6 +10,7 @@ import jakarta.persistence.EntityNotFoundException
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.junit.jupiter.MockitoExtension
 import org.modelmapper.ModelMapper
+import org.springframework.beans.BeanUtils
 import spock.lang.Specification
 
 import java.time.LocalDate
@@ -18,8 +20,8 @@ import java.time.LocalTime
 class MatchServiceSpec extends Specification {
 
     MatchRepository matchRepository = Mock()
-
     ModelMapper modelMapper = Mock()
+    BeanUtils beanUtils = Mock()
 
     MatchService matchService
 
@@ -102,6 +104,28 @@ class MatchServiceSpec extends Specification {
 
         then:
         1 * matchRepository.save(updatedMatch)
+    }
+
+    def "Test updating a match in MatchService - no match found"() {
+        given:
+        def id = UUID.fromString("99ae700e-fd2f-461b-bf54-ae962751d50a")
+        def updateMatchRequest = UpdateMatchRequest.builder()
+                .description("New Sample Match")
+                .matchDate(LocalDate.parse("2023-09-21"))
+                .matchTime(LocalTime.parse("18:30:02"))
+                .teamA("Team Fotis 2")
+                .teamB("Team Bravo 2")
+                .sport(Sport.BASKETBALL)
+                .build()
+
+        1 * matchRepository.findById(id) >> Optional.empty()
+
+        when:
+        matchService.updateMatch(id, updateMatchRequest)
+
+        then:
+        def ex = thrown(EntityNotFoundException.class)
+        ex.message == "Match not found with id: ${id}"
     }
 
     def "Delete existing match by ID"() {

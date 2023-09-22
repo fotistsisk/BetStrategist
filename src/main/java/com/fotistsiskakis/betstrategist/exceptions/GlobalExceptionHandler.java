@@ -40,9 +40,6 @@ public class GlobalExceptionHandler {
             return new ResponseEntity<>("A unique constraint was violated. Please provide a different value.", HttpStatus.BAD_REQUEST);
         }
 
-        // Add more specific error handling as needed for other PostgreSQL errors
-
-        // For generic PostgreSQL errors, you can provide a general message
         return new ResponseEntity<>("An error occurred. Please try again later.", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

@@ -29,7 +29,9 @@ public class MatchFilterService {
         return matchRepository.findAll((root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
 
-            addPredicate(Utils.getUuidFromString(filterRequest.getId()), root.get("id"), predicates, cb);
+            if(filterRequest.getId() != null){
+                addPredicate(Utils.getUuidFromString(filterRequest.getId()), root.get("id"), predicates, cb);
+            }
             addPredicate(filterRequest.getDescription(), root.get("description"), predicates, cb);
             if (filterRequest.getMatchDate() != null) {
                 LocalDate matchDate = LocalDate.parse(filterRequest.getMatchDate());
