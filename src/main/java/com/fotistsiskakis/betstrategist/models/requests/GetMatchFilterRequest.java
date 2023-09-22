@@ -3,8 +3,6 @@ package com.fotistsiskakis.betstrategist.models.requests;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.UUID;
-
 @Data
 @Builder
 public class GetMatchFilterRequest {
