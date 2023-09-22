@@ -29,12 +29,6 @@ public class MatchOddsController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @GetMapping("/odds/{id}")
-    public ResponseEntity<MatchOdds> getMatchOddsById(@PathVariable UUID id) {
-        MatchOdds matchOdds = matchOddsService.getMatchOddsById(id);
-        return new ResponseEntity<>(matchOdds, HttpStatus.FOUND);
-    }
-
     @GetMapping("/odds")
     public ResponseEntity<List<MatchOdds>> getFilteredMatchOdds(GetMatchOddsFilterRequest getMatchOddsFilterRequest) {
         List<MatchOdds> matches = matchOddsFilterService.getFilteredMatchOdds(getMatchOddsFilterRequest);

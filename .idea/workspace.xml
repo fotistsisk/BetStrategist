@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec43c93e-c823-4c24-b43c-32051a9bc91b" name="Changes" comment="Added MatchOddsFilterService and the corresponding controller method for filtering matchOdds based on any property of the  MatchOdds object.">
+    <list default="true" id="ec43c93e-c823-4c24-b43c-32051a9bc91b" name="Changes" comment="Realized that we need matchOddsList in every match so now the response of every match contains its odds. also every odd now contains only its matchId.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchOddsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchOddsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/Match.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/MatchOdds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/MatchOdds.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695329623560</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Realized that we need matchOddsList in every match so now the response of every match contains its odds. also every odd now contains only its matchId.">
+      <created>1695332278935</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1695332278935</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -290,7 +293,8 @@
     <MESSAGE value="Added updateMatch to MatchController and to MatchService. Also specs." />
     <MESSAGE value="Added deleteMatch to MatchController and to MatchService. Added utils to check if uuids in requests are valid(in controllers). Also specs." />
     <MESSAGE value="Added MatchOddsFilterService and the corresponding controller method for filtering matchOdds based on any property of the  MatchOdds object." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added MatchOddsFilterService and the corresponding controller method for filtering matchOdds based on any property of the  MatchOdds object." />
+    <MESSAGE value="Realized that we need matchOddsList in every match so now the response of every match contains its odds. also every odd now contains only its matchId." />
+    <option name="LAST_COMMIT_MESSAGE" value="Realized that we need matchOddsList in every match so now the response of every match contains its odds. also every odd now contains only its matchId." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

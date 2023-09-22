@@ -35,14 +35,4 @@ public class MatchOddsService {
                 .id(matchOdds.getId())
                 .build();
     }
-
-    public MatchOdds getMatchOddsById(UUID id) {
-        Optional<MatchOdds> matchOddsOptional = matchOddsRepository.findById(id);
-
-        if (matchOddsOptional.isPresent()) {
-            return matchOddsOptional.get();
-        } else {
-            throw new EntityNotFoundException();
-        }
-    }
 }
