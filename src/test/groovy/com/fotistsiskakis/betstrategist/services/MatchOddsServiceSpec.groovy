@@ -29,7 +29,7 @@ class MatchOddsServiceSpec extends Specification {
         def request = CreateMatchOddsRequest.builder()
                 .odd((long) 1.2)
                 .specifier("X")
-                .matchId(uuid)
+                .matchId(uuid.toString())
                 .build()
 
         def match = Match.builder()
@@ -67,7 +67,7 @@ class MatchOddsServiceSpec extends Specification {
         def request = CreateMatchOddsRequest.builder()
                 .odd((long) 1.2)
                 .specifier("X")
-                .matchId(uuid)
+                .matchId(uuid.toString())
                 .build()
 
         def match = Match.builder()

@@ -23,7 +23,7 @@ public class MatchOddsService {
     private final MatchRepository matchRepository;
 
     public CreateMatchOddsResponse createMatchOdds(CreateMatchOddsRequest request){
-        Match match = matchRepository.findById(request.getMatchId())
+        Match match = matchRepository.findById(Utils.getUuidFromString(request.getMatchId()))
                 .orElseThrow(() -> new EntityNotFoundException("Match not found with id: " + request.getMatchId()));
         MatchOdds matchOdds = MatchOdds.builder()
                 .match(match)
