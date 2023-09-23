@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "c5734017-b21f-4fb8-9ac7-ce3cf9d83625",
+		"name": "BetStrategist",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Match",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"Sample Match\",\n  \"matchDate\": \"2023-09-22\",\n  \"matchTime\": \"18:30:00\",\n  \"teamA\": \"Team Amalia\",\n  \"teamB\": \"Team Dimitris\",\n  \"sport\": \"FOOTBALL\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/matches",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"matches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Match Filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/matches?sport=FOOTBALL",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"matches"
+					],
+					"query": [
+						{
+							"key": "sport",
+							"value": "FOOTBALL"
+						},
+						{
+							"key": "teamName",
+							"value": "Team Fotis",
+							"disabled": true
+						},
+						{
+							"key": "matchTime",
+							"value": "18:30:31",
+							"disabled": true
+						},
+						{
+							"key": "teamB",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "matchDate",
+							"value": "2023-09-20",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "Sample Match",
+							"disabled": true
+						},
+						{
+							"key": "teamA",
+							"value": "Team Fotis",
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "1811706b-3bf2-4844-af6a-5233ef039883",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change Match",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"Updated Match Description\",\n    \"matchDate\": \"2023-09-21\",\n    \"matchTime\": \"19:00:00\",\n    \"teamA\": \"Team Alpha\",\n    \"teamB\": \"Team Beta\",\n    \"sport\": \"BASKETBALL\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/matches/20ca6e75-7b9c-4213-962f-fa6a2ce694da",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"matches",
+						"20ca6e75-7b9c-4213-962f-fa6a2ce694da"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Match",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/matches/20ca6e75-7b9c-4213-962f-fa6a2ce694da",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"matches",
+						"20ca6e75-7b9c-4213-962f-fa6a2ce694da"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Match Odds",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"matchId\": \"28812bc0-75a5-4fff-b566-873de981a17c\",\n  \"specifier\": \"2-1\",\n  \"odd\": 7\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/matches/odds",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"matches",
+						"odds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Match Odds Filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/matches/odds",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"matches",
+						"odds"
+					],
+					"query": [
+						{
+							"key": "odd",
+							"value": "6",
+							"disabled": true
+						},
+						{
+							"key": "specifier",
+							"value": "2-1",
+							"disabled": true
+						},
+						{
+							"key": "matchId",
+							"value": "c62aba3d-d6fc-4a93-805a-e9cea93e36b5",
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "c7c35cec-a1e7-43bc-bf2b-4f4464154b60",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change MatchOdds",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"matchId\": \"a5f0d302-75d7-4406-9ede-7f885490de8a\",\n  \"specifier\": \"New Specifier\",\n  \"odd\": 2.5\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/matches/odds/52593b59-1171-4ac2-ac0a-b96dc5882782",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"matches",
+						"odds",
+						"52593b59-1171-4ac2-ac0a-b96dc5882782"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Match Odds",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/matches/odds/52593b59-1171-4ac2-ac0a-b96dc5882782",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"matches",
+						"odds",
+						"52593b59-1171-4ac2-ac0a-b96dc5882782"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
