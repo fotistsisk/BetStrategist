@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec43c93e-c823-4c24-b43c-32051a9bc91b" name="Changes" comment="Fixed minor bug in MatchFilterService which didn't check if the uuid string was null before passing it in Utils.getUuidFromString.">
+    <list default="true" id="ec43c93e-c823-4c24-b43c-32051a9bc91b" name="Changes" comment="Removed unused imports and added springdoc-openapi-starter-webmvc-ui for documentation.">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/config/AppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchOddsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/controllers/MatchOddsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/MatchOdds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/MatchOdds.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/CreateMatchOddsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/models/requests/CreateMatchOddsRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsFilterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fotistsiskakis/betstrategist/services/MatchOddsFilterService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,38 +78,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MatchOddsControllerSpec.test deleteMatchOdds" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BetStrategist" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.fotistsiskakis.betstrategist.repositories.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.fotistsiskakis.betstrategist.repositories" />
-      <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.repositories.MatchOddsControllerSpec" />
-      <option name="METHOD_NAME" value="test deleteMatchOdds" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MatchOddsControllerSpec.test updateMatchOdds" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BetStrategist" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.fotistsiskakis.betstrategist.repositories.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.fotistsiskakis.betstrategist.repositories" />
-      <option name="MAIN_CLASS_NAME" value="com.fotistsiskakis.betstrategist.repositories.MatchOddsControllerSpec" />
-      <option name="METHOD_NAME" value="test updateMatchOdds" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MatchServiceSpec.Test updating a match in MatchService - error in copyProperties" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BetStrategist" />
       <extension name="coverage">
@@ -174,10 +138,31 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.services: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="services" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.BetStrategist" />
-      <item itemvalue="JUnit.MatchOddsControllerSpec.test deleteMatchOdds" />
-      <item itemvalue="JUnit.MatchOddsControllerSpec.test updateMatchOdds" />
+      <item itemvalue="Docker.Dockerfile" />
+      <item itemvalue="Docker.docker-compose.yml.services: Compose Deployment" />
       <item itemvalue="JUnit.MatchServiceSpec.Test updating a match in MatchService" />
       <item itemvalue="JUnit.MatchServiceSpec.Test updating a match in MatchService - error in copyProperties" />
       <item itemvalue="Maven.BetStrategist [clean,test...]" />
@@ -185,10 +170,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.BetStrategist" />
+        <item itemvalue="Docker.docker-compose.yml.services: Compose Deployment" />
+        <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="JUnit.MatchServiceSpec.Test updating a match in MatchService - error in copyProperties" />
         <item itemvalue="JUnit.MatchServiceSpec.Test updating a match in MatchService" />
-        <item itemvalue="JUnit.MatchOddsControllerSpec.test deleteMatchOdds" />
-        <item itemvalue="JUnit.MatchOddsControllerSpec.test updateMatchOdds" />
       </list>
     </recent_temporary>
   </component>
@@ -313,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695419253179</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Removed unused imports and added springdoc-openapi-starter-webmvc-ui for documentation.">
+      <created>1695420496179</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1695420496179</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -344,7 +336,8 @@
     <MESSAGE value="Added delete of MatchOdds. Also specs." />
     <MESSAGE value="Added specs for both controllers" />
     <MESSAGE value="Fixed minor bug in MatchFilterService which didn't check if the uuid string was null before passing it in Utils.getUuidFromString." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed minor bug in MatchFilterService which didn't check if the uuid string was null before passing it in Utils.getUuidFromString." />
+    <MESSAGE value="Removed unused imports and added springdoc-openapi-starter-webmvc-ui for documentation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unused imports and added springdoc-openapi-starter-webmvc-ui for documentation." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
