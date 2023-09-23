@@ -2,6 +2,7 @@ package com.fotistsiskakis.betstrategist.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,6 +41,7 @@ public class Match {
     @Column(name = "match_time")
     @DateTimeFormat(pattern = "HH:mm:ss")
     @NotNull
+    @Schema(type = "string", format = "time", example = "18:30:00")
     private LocalTime matchTime;
 
     @Column(name = "team_a")
@@ -53,6 +55,7 @@ public class Match {
     @Column(name = "sport")
     @Enumerated(EnumType.ORDINAL)
     @NotNull
+    @Schema(allowableValues = { "FOOTBALL", "BASKETBALL" })
     private Sport sport;
 
     @OneToMany(fetch=FetchType.LAZY, mappedBy = "match", cascade = CascadeType.ALL,  orphanRemoval = true)

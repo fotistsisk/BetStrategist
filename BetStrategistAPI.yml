@@ -1,0 +1,473 @@
+openapi: 3.0.1
+info:
+  title: BetStrategist API
+  description: Application for saving and retrieving matches and match odds
+  license:
+    name: Apache 2.0
+    url: http://springdoc.org
+  version: v1.0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  /matches/{id}:
+    put:
+      tags:
+        - match-controller
+      summary: Updates a match
+      description: Updates a match given it's id, based on the request and returns the new object
+      operationId: updateMatch
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMatchRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Match'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                error: Bad Request Error
+        '404':
+          description: Not Found
+          content:
+            application/json: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example: An unexpected error occurred. Please try again later.
+    delete:
+      tags:
+        - match-controller
+      summary: Deletes a match
+      description: Deletes a match given it's id
+      operationId: deleteMatch
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                error: Bad Request Error
+        '404':
+          description: Not Found
+          content:
+            application/json: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example: An unexpected error occurred. Please try again later.
+  /matches/odds/{id}:
+    put:
+      tags:
+        - match-odds-controller
+      summary: Updates a matchOdd
+      description: Updates a matchOdd given it's id, based on the request and returns the new object
+      operationId: updateMatchOdds
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMatchOddsRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MatchOdds'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                error: Bad Request Error
+        '404':
+          description: Not Found
+          content:
+            application/json: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example: An unexpected error occurred. Please try again later.
+    delete:
+      tags:
+        - match-odds-controller
+      summary: Deletes a matchOdd
+      description: Deletes a matchOdd given it's id
+      operationId: deleteMatchOdds
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                error: Bad Request Error
+        '404':
+          description: Not Found
+          content:
+            application/json: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example: An unexpected error occurred. Please try again later.
+  /matches:
+    get:
+      tags:
+        - match-controller
+      summary: Filters and returns matches
+      description: Get all the matches and their odds, based on one or any combination of their attributes
+      operationId: getFilteredMatches
+      parameters:
+        - name: getMatchFilterRequest
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/GetMatchFilterRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Match'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                error: Bad Request Error
+        '404':
+          description: Not Found
+          content:
+            application/json: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example: An unexpected error occurred. Please try again later.
+    post:
+      tags:
+        - match-controller
+      summary: Creates match
+      description: Creates a match based on the request and generates a random UUID
+      operationId: createMatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMatchRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CreateMatchResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                error: Bad Request Error
+        '404':
+          description: Not Found
+          content:
+            application/json: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example: An unexpected error occurred. Please try again later.
+  /matches/odds:
+    get:
+      tags:
+        - match-odds-controller
+      summary: Filters and returns matchOdds
+      description: Get all the matchOdds based on one or any combination of their attributes
+      operationId: getFilteredMatchOdds
+      parameters:
+        - name: getMatchOddsFilterRequest
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/GetMatchOddsFilterRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MatchOdds'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                error: Bad Request Error
+        '404':
+          description: Not Found
+          content:
+            application/json: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example: An unexpected error occurred. Please try again later.
+    post:
+      tags:
+        - match-odds-controller
+      summary: Creates matchOdds
+      description: Creates a matchOdds object based on the request and generates a random UUID
+      operationId: createMatchOdds
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMatchOddsRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CreateMatchOddsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                error: Bad Request Error
+        '404':
+          description: Not Found
+          content:
+            application/json: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example: An unexpected error occurred. Please try again later.
+components:
+  schemas:
+    UpdateMatchRequest:
+      type: object
+      properties:
+        description:
+          type: string
+        matchDate:
+          type: string
+          format: date
+        matchTime:
+          type: string
+          format: time
+          example: '18:30:00'
+        teamA:
+          type: string
+        teamB:
+          type: string
+        sport:
+          type: string
+          enum:
+            - FOOTBALL
+            - BASKETBALL
+            - FOOTBALL
+            - BASKETBALL
+    Match:
+      required:
+        - description
+        - matchDate
+        - matchTime
+        - sport
+        - teamA
+        - teamB
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        description:
+          type: string
+        matchDate:
+          type: string
+          format: date
+        matchTime:
+          type: string
+          format: time
+          example: '18:30:00'
+        teamA:
+          type: string
+        teamB:
+          type: string
+        sport:
+          type: string
+          enum:
+            - FOOTBALL
+            - BASKETBALL
+            - FOOTBALL
+            - BASKETBALL
+        matchOddsList:
+          type: array
+          items:
+            $ref: '#/components/schemas/MatchOdds'
+    MatchOdds:
+      required:
+        - match
+        - odd
+        - specifier
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        match:
+          type: string
+          format: uuid
+        specifier:
+          type: string
+        odd:
+          type: number
+    UpdateMatchOddsRequest:
+      required:
+        - matchId
+        - odd
+        - specifier
+      type: object
+      properties:
+        matchId:
+          type: string
+        specifier:
+          type: string
+        odd:
+          type: number
+    CreateMatchRequest:
+      required:
+        - description
+        - matchDate
+        - matchTime
+        - sport
+        - teamA
+        - teamB
+      type: object
+      properties:
+        description:
+          type: string
+        matchDate:
+          type: string
+          format: date
+        matchTime:
+          type: string
+          format: time
+          example: '18:30:00'
+        teamA:
+          type: string
+        teamB:
+          type: string
+        sport:
+          type: string
+          enum:
+            - FOOTBALL
+            - BASKETBALL
+            - FOOTBALL
+            - BASKETBALL
+    CreateMatchResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+    CreateMatchOddsRequest:
+      required:
+        - matchId
+        - odd
+        - specifier
+      type: object
+      properties:
+        matchId:
+          type: string
+        specifier:
+          type: string
+        odd:
+          type: number
+    CreateMatchOddsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+    GetMatchFilterRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        matchDate:
+          type: string
+        matchTime:
+          type: string
+        teamA:
+          type: string
+        teamB:
+          type: string
+        sport:
+          type: string
+        teamName:
+          type: string
+    GetMatchOddsFilterRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        matchId:
+          type: string
+        specifier:
+          type: string
+        odd:
+          type: number
